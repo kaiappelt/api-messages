@@ -3,7 +3,18 @@ import { v4 } from "uuid";
 import AppError from "../../AppError";
 
 let messages: Array<any>;
-messages = [];
+messages = [
+    {
+        id: '3fc18d8e-a6be-4ae6-8a6a-f28d28895b23',
+        description: 'Limpar o quintal',
+        details: 'Cortar a grama'
+    },
+    {
+        id: '8c929f57-81d4-40f1-ae46-6814044ff6c5',
+        description: 'Consertar a pia',
+        details: 'Cano está quebrado'
+    },
+];
 
 interface IRequest{
     description: string,
@@ -14,6 +25,35 @@ export default class MessagesController {
 
     index(request: Request, response: Response) {
         response.json(messages);
+    }
+
+    show(request: Request, response: Response){
+        const { id } = request.params;
+
+        let messageExists:boolean;
+        messageExists = false;
+        
+        // Verifica se existe um usuário
+        for (let i = 0; i < messages.length; i++){
+            if(messages[i].id == id) {
+                messageExists = true;
+            }
+        }
+
+        if(!messageExists){
+            // Gera uma exeption de erro
+            throw new AppError("Registro não encontrado!")
+        }
+
+        let message = {};
+
+        for (let i = 0; i < messages.length; i++){
+            if(messages[i].id == id) {
+                message = messages[i];
+            }
+        }
+
+        response.json(message);        
     }
 
     create(request: Request, response: Response) {

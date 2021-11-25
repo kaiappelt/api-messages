@@ -6,13 +6,8 @@ import AppError from "../../AppError";
 let usuarios: Array<any>;
 usuarios = [
     {
-        id: "b979776a-6738-4d1f-965a-2854977642f6",
-        email: "usuario1@gmail.com",
-        password: "12345678"
-    },
-    {
         id: "4a98a851-6cbf-4da2-89d0-5240efe5a71b",
-        email: "usuario2@gmail.com",
+        email: "teste@gmail.com",
         password: "12345678"
     }
 ];
@@ -38,7 +33,7 @@ export default class UsersController {
 
         if(!userExists){
             // Gera uma exceção de erro
-            throw new AppError("E-mail ou senha incorretos!", 401);
+            throw new AppError("E-mail ou senha incorretos!", 400);
         } 
 
         response.json({
@@ -64,7 +59,7 @@ export default class UsersController {
 
         if(userExists){
             // Gera uma exeption de erro
-            throw new AppError("Já existe um usuário com este e-mail!")
+            throw new AppError("Já existe um usuário com este e-mail!", 412)
         }
 
         let uuid = v4();
@@ -95,7 +90,7 @@ export default class UsersController {
 
         if(!userExists){
             // Gera uma exeption de erro
-            throw new AppError("Usuário não encontrado!")
+            throw new AppError("Usuário não encontrado!", 412)
         }
 
         let {
@@ -133,7 +128,7 @@ export default class UsersController {
 
         if(!userExists){
             // Gera uma exeption de erro
-            throw new AppError("Usuário não encontrado!")
+            throw new AppError("Usuário não encontrado!", 412)
         }
 
         // percorre o array procurando o id passado por parametro

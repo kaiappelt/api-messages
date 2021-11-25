@@ -11,6 +11,11 @@ messagesRoutes.get(
     messagesController.index
 );
 
+messagesRoutes.get(
+    "/:id",
+    messagesController.show
+);
+
 messagesRoutes.post(
     "/", 
     //MIDDLEWARE
