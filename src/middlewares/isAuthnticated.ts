@@ -1,19 +1,28 @@
 import { NextFunction, Request, Response } from "express";
 import token from "../config"
 import AppError from "../AppError";
+import { verify } from "jsonwebtoken";
+import authConfig from "../config/index"
 
-export default function isAuthenticated(request:Request, response: Response, next: NextFunction ) {
+export default function isAuthenticated(
+    request:Request, 
+    response: Response, 
+    next: NextFunction 
+    ): void {
     const authHeader = request.headers.authorization;
 
     if(!authHeader){
         throw new AppError("Token não informado!");
     }
 
-    const [, userToken] = authHeader.split(' ');
+    const [, token] = authHeader.split(' ');
 
-    if(userToken === token){
+    try {
+        const decodeToken = verify(token, authConfig.jwt.secret)
+
         return next();
-    } else {
-        throw new AppError("Token inválido", 401);
+
+    } catch {
+        throw new AppError("Token inválido!", 401);
     }
 }

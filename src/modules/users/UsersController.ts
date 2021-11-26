@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { v4 } from "uuid";
-import token from "../../config";
+import authConfig from "../../config/index"
 import AppError from "../../AppError";
+import { sign } from "jsonwebtoken";
+import usersRoutes from "./users.routes";
 
 let usuarios: Array<any>;
 usuarios = [
@@ -21,12 +23,19 @@ export default class UsersController {
     auth(request: Request, response: Response) {
         let { email, password } = request.body;
 
+        let user = {
+            id: "",
+            email: ""
+        };
+
         let userExists:boolean;
         userExists = false;
         
         // Verifica se existe um email e senha
         for (let i = 0; i < usuarios.length; i++){
             if(usuarios[i].email === email && usuarios[i].password === password) {
+                user.id = usuarios[i].id;
+                user.email = usuarios[i].email;
                 userExists = true;
             }
         }
@@ -36,8 +45,14 @@ export default class UsersController {
             throw new AppError("E-mail ou senha incorretos!", 400);
         } 
 
+        const token = sign({}, authConfig.jwt.secret, {
+            subject: user.id,
+            expiresIn: authConfig.jwt.expiresIn,
+        })
+
         response.json({
             token,
+            user,
         })
     }
 
