@@ -1,4 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var token = "5cbb69cc44ce13647f02c1e350b1a1930eecaea6";
-exports.default = token;
+exports.default = {
+    jwt: {
+        secret: "f8b47d2e95c114112d9cc2158adeb774",
+        expiresIn: "1d",
+    }
+};
