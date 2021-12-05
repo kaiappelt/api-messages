@@ -3,12 +3,10 @@ import express, { NextFunction, Request, response, Response } from "express";
 import 'express-async-errors';
 import { errors } from 'celebrate';
 import AppError from "./AppError";
-import cors from 'cors';
 import routes from './routes';
 
 let app = express();
 app.use(express.json());
-app.use(cors());
   
 app.use(routes);
 
