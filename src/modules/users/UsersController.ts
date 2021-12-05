@@ -42,7 +42,7 @@ export default class UsersController {
 
         if(!userExists){
             // Gera uma exceção de erro
-            throw new AppError("E-mail ou senha incorretos!", 400);
+            throw new AppError("E-mail ou senha incorretos!", 401);
         } 
 
         const token = sign({}, authConfig.jwt.secret, {
