@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments, errors } from 'celebrate';
 import UsersController from "./UsersController";
-import { join } from "path/posix";
 
 let usersRoutes = Router();
 let usersController = new UsersController();
