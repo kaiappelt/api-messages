@@ -5,27 +5,6 @@ import UsersController from "./UsersController";
 let usersRoutes = Router();
 let usersController = new UsersController();
 
-usersRoutes.get(
-    "/",
-    //MIDDLEWARE
-    usersController.index
-);
-
-usersRoutes.post(
-    "/auth", 
-    //MIDDLEWARE
-    // Validação dos campos utilizando o celebrate
-    celebrate({
-        [Segments.BODY]:{
-            email: Joi.string().email().required(),
-            password: Joi.string().required(),
-        }
-    }),
-    // Chama o controller
-    usersController.auth
-);
-
-
 usersRoutes.post(
     "/", 
     //MIDDLEWARE

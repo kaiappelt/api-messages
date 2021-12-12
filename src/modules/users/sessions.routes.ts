@@ -6,7 +6,7 @@ let sessionsRouter = Router();
 let usersController = new UsersController();
 
 sessionsRouter.post(
-    "/auth", 
+    "/",
     celebrate({
         [Segments.BODY]:{
             email: Joi.string().email().required(),

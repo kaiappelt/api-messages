@@ -9,7 +9,7 @@ var celebrate_1 = require("celebrate");
 var UsersController_1 = __importDefault(require("./UsersController"));
 var sessionsRouter = (0, express_1.Router)();
 var usersController = new UsersController_1.default();
-sessionsRouter.post("/auth", (0, celebrate_1.celebrate)((_a = {},
+sessionsRouter.post("/", (0, celebrate_1.celebrate)((_a = {},
     _a[celebrate_1.Segments.BODY] = {
         email: celebrate_1.Joi.string().email().required(),
         password: celebrate_1.Joi.string().required(),
