@@ -9,8 +9,10 @@ require("express-async-errors");
 var celebrate_1 = require("celebrate");
 var AppError_1 = __importDefault(require("./AppError"));
 var routes_1 = __importDefault(require("./routes"));
+var cors_1 = __importDefault(require("cors"));
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.use(routes_1.default);
 // Habilita o retorno de erros do celebrate
 app.use((0, celebrate_1.errors)());
