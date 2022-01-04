@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments, errors } from 'celebrate';
-import UsersController from "./UsersController";
+import SessionsController from "../controllers/SessionsController";
 
 let sessionsRouter = Router();
-let usersController = new UsersController();
+let sessionsController = new SessionsController();
 
 sessionsRouter.post(
     "/",
@@ -13,7 +13,7 @@ sessionsRouter.post(
             password: Joi.string().required(),
         }
     }),
-    usersController.auth
+    sessionsController.create
 );
 
 export default sessionsRouter;

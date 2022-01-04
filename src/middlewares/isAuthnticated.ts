@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import token from "../config"
 import AppError from "../AppError";
 import { verify } from "jsonwebtoken";
-import authConfig from "../config/index"
+import authConfig from "../config/auth"
 
 export default function isAuthenticated(
     request:Request, 

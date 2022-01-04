@@ -1,10 +1,14 @@
+import dotenv from 'dotenv'
 import 'reflect-metadata';
 import express, { NextFunction, Request, response, Response } from "express";
 import 'express-async-errors';
 import { errors } from 'celebrate';
 import AppError from "./AppError";
-import routes from './routes';
+import routes from './routes/index';
 import cors from 'cors';
+import './database/index';
+
+dotenv.config();
 
 let app = express();
 app.use(cors());

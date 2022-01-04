@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments, errors } from 'celebrate';
-import MessagesController from "./MessagesController";
+import MessagesController from "../MessagesController";
 
 let messagesRoutes = Router();
 let messagesController = new MessagesController();

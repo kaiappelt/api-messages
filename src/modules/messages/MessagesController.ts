@@ -23,8 +23,8 @@ interface IRequest{
 
 export default class MessagesController {
 
-    index(request: Request, response: Response) {
-        response.json(messages);
+    async index(request: Request, response: Response) {
+        response.json(messages); 
     }
 
     show(request: Request, response: Response){

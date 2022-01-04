@@ -1,7 +1,7 @@
 import { Router } from "express";
-import usersRoutes from "../modules/users/users.routes";
-import messagesRoutes from "../modules/messages/messages.routes";
-import sessionsRouter from "../modules/users/sessions.routes";
+import usersRoutes from "../modules/users/routes/users.routes";
+import messagesRoutes from "../modules/messages/routes/messages.routes";
+import sessionsRouter from "../modules/auth/routes/sessions.routes";
 import isAuthenticated from "../middlewares/isAuthnticated";
 
 const routes = Router();
