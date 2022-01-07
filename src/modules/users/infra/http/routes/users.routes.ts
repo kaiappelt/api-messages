@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments, errors } from 'celebrate';
 import UsersController from "../controllers/UsersController";
-import isAuthenticated from "src/middlewares/isAuthnticated";
+import isAuthenticated from "@shared/infra/http/middlewares/isAuthnticated";
 
 let usersRoutes = Router();
 let usersController = new UsersController();
@@ -9,7 +9,6 @@ let usersController = new UsersController();
 // Para listar os usuários cadastrados, é preciso estar autenticado
 usersRoutes.get(
     "/",
-    isAuthenticated,
     usersController.index
 )
 

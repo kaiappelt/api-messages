@@ -1,9 +1,9 @@
-import User from "@modules/users/entities/User";
-import UsersRepository from "@modules/users/repositories/UsersRepository";
+import User from "@modules/users/infra/typeorm/entities/User";
+import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository";
 import authConfig from "@config/auth"
 import { compare } from "bcryptjs";
 import { Response } from "express";
-import AppError from "src/AppError";
+import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import { sign } from "jsonwebtoken";
 

@@ -1,3 +1,4 @@
+import { IUser } from "@modules/users/domain/models/IUser";
 import {
    Column,
    CreateDateColumn,

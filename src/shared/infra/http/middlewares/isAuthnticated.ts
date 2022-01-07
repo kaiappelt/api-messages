@@ -1,7 +1,7 @@
+import AppError from "@shared/errors/AppError";
 import { NextFunction, Request, Response } from "express";
-import AppError from "../AppError";
 import { verify } from "jsonwebtoken";
-import authConfig from "../config/auth"
+import authConfig from "@config/auth"
 
 export default function isAuthenticated(
     request:Request, 

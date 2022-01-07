@@ -1,25 +1,24 @@
 import { hash } from 'bcryptjs';
-import AppError from 'src/AppError';
-import { getCustomRepository } from 'typeorm';
-import User from '../entities/User';
-import UsersRepository from '../repositories/UsersRepository';
+import AppError from '@shared/errors/AppError';
+import { IUserRepository } from '../domain/repositories/IUserRepository';
+import { ICreateUser } from '../domain/models/ICreateUser';
+import { IUser } from '../domain/models/IUser';
+import { inject, injectable } from 'tsyringe';
 
-interface IRequest {
-    name: string;
-    email: string;
-    password: string;
-}
-
-
+@injectable()
 class CreateUserService {
+    constructor(
+        @inject('UsersRepository')
+        private usersRepository: IUserRepository
+    ) {}
+
     public async execute({
         name,
         email,
         password
-    }:IRequest): Promise<User> {
-        const usersRepository = getCustomRepository(UsersRepository);
+    }: ICreateUser): Promise<IUser> {
 
-        const emailExists = await usersRepository.findByEmail(email);
+        const emailExists = await this.usersRepository.findByEmail(email);
 
         if(emailExists) {
             throw new AppError("E-mail já existe!", 412);
@@ -27,13 +26,11 @@ class CreateUserService {
 
         const hashedPassword = await hash(password, 8);
 
-        const user = usersRepository.create({
+        const user = await this.usersRepository.create({
             name,
             email,
             password: hashedPassword
         });
-
-        await usersRepository.save(user);
 
         return user;
     }

@@ -3,10 +3,11 @@ import 'reflect-metadata';
 import express, { NextFunction, Request, response, Response } from "express";
 import 'express-async-errors';
 import { errors } from 'celebrate';
-import AppError from "./AppError";
-import routes from './routes/index';
+import AppError from '@shared/errors/AppError';
+import routes from './routes';
 import cors from 'cors';
-import './database/index';
+import '@shared/infra/typeorm';
+import '@shared/container';
 
 dotenv.config();
 
