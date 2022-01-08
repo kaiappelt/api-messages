@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import CreateSessionsService from "../services/CreateSessionsService";
+import { container } from "tsyringe";
+import CreateSessionsService from "../../../services/CreateSessionsService";
 
 export default  class SessionsController{
     public async create(
@@ -8,7 +9,7 @@ export default  class SessionsController{
     ): Promise<Response> {
         const { email, password } = request.body;
 
-        const createSession = new CreateSessionsService();
+        const createSession = container.resolve(CreateSessionsService);
 
         const user = await createSession.execute({
             email,

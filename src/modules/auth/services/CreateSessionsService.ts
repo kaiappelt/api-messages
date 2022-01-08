@@ -1,27 +1,23 @@
-import User from "@modules/users/infra/typeorm/entities/User";
-import UsersRepository from "@modules/users/infra/typeorm/repositories/UsersRepository";
 import authConfig from "@config/auth"
 import { compare } from "bcryptjs";
 import { Response } from "express";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import { sign } from "jsonwebtoken";
+import { inject, injectable } from "tsyringe";
+import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
+import { ICreateSessions } from "../domain/models/ICreateSessions";
+import { IUserAuth } from "../domain/models/IUserAuth";
 
-interface IRequest {
-    email: string;
-    password: string;
-}
-
-interface IResponse {
-    user: User;
-    token: string;
-}
-
+@injectable()
 class CreateSessionsService {
-    public async execute({ email, password}: IRequest): Promise<IResponse> {
-        const usersRepository = getCustomRepository(UsersRepository);
+    constructor(
+        @inject("UsersRepository")
+        private usersRepository: IUserRepository
+    ) {}
 
-        const user = await usersRepository.findByEmail(email);
+    public async execute({ email, password}: ICreateSessions): Promise<IUserAuth> {
+        const user = await this.usersRepository.findByEmail(email);
 
         if(!user) {
             throw new AppError('E-mail ou senha incorretos', 401);
