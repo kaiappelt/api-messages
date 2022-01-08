@@ -11,10 +11,12 @@ class CreateMessagesService {
     ) {}
 
     public async execute({
+        user_id,
         description,
         details,
     }: ICreateMessage): Promise<IMessage> {
         const message = await this.messageRepository.create({
+            user_id,
             description,
             details,
         });

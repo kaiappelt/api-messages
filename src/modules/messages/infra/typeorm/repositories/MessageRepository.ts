@@ -24,10 +24,12 @@ class MessageRepository implements IMessageRepository {
     }
 
     public async create({
+        user_id,
         description,
         details,
     }: ICreateMessage): Promise<Message> {
         const message = this.ormRepository.create({
+            user_id,
             description,
             details,
         });

@@ -10,6 +10,9 @@ import {
   class Message {
     @PrimaryGeneratedColumn("uuid")
     id: string;
+
+    @Column()
+    user_id: string;
   
     @Column()
     description: string;
