@@ -11,7 +11,22 @@ messagesRoutes.get(
 )
 
 messagesRoutes.get(
+    "/user/:user_id",
+    celebrate({
+        [Segments.PARAMS]:{
+            user_id: Joi.string().uuid().required()
+        }
+    }),
+    messagesController.showByUserId
+)
+
+messagesRoutes.get(
     "/:id",
+    celebrate({
+        [Segments.PARAMS]:{
+            id: Joi.string().uuid().required()
+        }
+    }),
     messagesController.show
 )
 

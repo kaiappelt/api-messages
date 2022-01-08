@@ -5,6 +5,7 @@ import CreateMessagesService from "@modules/messages/service/CreateMessagesServi
 import ShowMessageService from "@modules/messages/service/ShowMessageService";
 import UpdateMessagesService from "@modules/messages/service/UpdateMessageService";
 import DeleteMessagesService from "@modules/messages/service/DeleteMessageService";
+import ShowMessagesByUserIdService from "@modules/messages/service/ShowMessagesByUserIdService";
 
 export default class MessagesController {
     public async index(
@@ -16,6 +17,19 @@ export default class MessagesController {
             const messages = await listMessages.execute();
         
             return response.json(messages);
+    }
+
+    public async showByUserId(
+        request: Request, 
+        response: Response
+        ):Promise<Response> {
+        const { user_id } = request.params;
+
+        const showMessages = container.resolve(ShowMessagesByUserIdService);
+
+        const messages = await showMessages.execute({ user_id });
+
+        return response.json(messages);
     }
 
     public async show(
