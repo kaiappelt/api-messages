@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var AppError_1 = __importDefault(require("@shared/errors/AppError"));
+var AppError_1 = __importDefault(require("../../../errors/AppError"));
 var jsonwebtoken_1 = require("jsonwebtoken");
-var auth_1 = __importDefault(require("@config/auth"));
+var auth_1 = __importDefault(require("../../../../config/auth"));
 function isAuthenticated(request, response, next) {
     var authHeader = request.headers.authorization;
     if (!authHeader) {

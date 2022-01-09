@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
-var users_routes_1 = __importDefault(require("@modules/users/infra/http/routes/users.routes"));
-var sessions_routes_1 = __importDefault(require("@modules/auth/infra/http/routes/sessions.routes"));
-var messages_routes_1 = __importDefault(require("@modules/messages/infra/http/routes/messages.routes"));
+var users_routes_1 = __importDefault(require("../../../../modules/users/infra/http/routes/users.routes"));
+var sessions_routes_1 = __importDefault(require("../../../../modules/auth/infra/http/routes/sessions.routes"));
+var messages_routes_1 = __importDefault(require("../../../../modules/messages/infra/http/routes/messages.routes"));
 var isAuthnticated_1 = __importDefault(require("../middlewares/isAuthnticated"));
 var routes = (0, express_1.Router)();
 routes.use("/auth", sessions_routes_1.default);

@@ -1,4 +1,4 @@
-import { IUser } from "@modules/users/domain/models/IUser";
+import { IUser } from "../../../../modules/users/domain/models/IUser";
 
 export interface IUserAuth {
     user: IUser;

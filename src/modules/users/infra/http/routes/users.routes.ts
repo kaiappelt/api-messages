@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments, errors } from 'celebrate';
 import UsersController from "../controllers/UsersController";
-import isAuthenticated from "@shared/infra/http/middlewares/isAuthnticated";
+import isAuthenticated from "../../../../../shared/infra/http/middlewares/isAuthnticated";
 
 
 let usersRoutes = Router();

@@ -1,6 +1,6 @@
-import { ICreateMessage } from "@modules/messages/domain/models/ICreateMessage";
-import { IMessage } from "@modules/messages/domain/models/IMessage";
-import { IMessageRepository } from "@modules/messages/domain/repositories/IMessageRepository";
+import { ICreateMessage } from "../../../../../modules/messages/domain/models/ICreateMessage";
+import { IMessage } from "../../../../../modules/messages/domain/models/IMessage";
+import { IMessageRepository } from "../../../../../modules/messages/domain/repositories/IMessageRepository";
 import { getRepository, Repository } from "typeorm";
 import Message from "../entities/Message";
 

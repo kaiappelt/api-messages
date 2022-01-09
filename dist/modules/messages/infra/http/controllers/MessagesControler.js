@@ -40,12 +40,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var tsyringe_1 = require("tsyringe");
-var ListMessagesService_1 = __importDefault(require("@modules/messages/service/ListMessagesService"));
-var CreateMessagesService_1 = __importDefault(require("@modules/messages/service/CreateMessagesService"));
-var ShowMessageService_1 = __importDefault(require("@modules/messages/service/ShowMessageService"));
-var UpdateMessageService_1 = __importDefault(require("@modules/messages/service/UpdateMessageService"));
-var DeleteMessageService_1 = __importDefault(require("@modules/messages/service/DeleteMessageService"));
-var ShowMessagesByUserIdService_1 = __importDefault(require("@modules/messages/service/ShowMessagesByUserIdService"));
+var ListMessagesService_1 = __importDefault(require("../../../../../modules/messages/service/ListMessagesService"));
+var CreateMessagesService_1 = __importDefault(require("../../../../../modules/messages/service/CreateMessagesService"));
+var ShowMessageService_1 = __importDefault(require("../../../../../modules/messages/service/ShowMessageService"));
+var UpdateMessageService_1 = __importDefault(require("../../../../../modules/messages/service/UpdateMessageService"));
+var DeleteMessageService_1 = __importDefault(require("../../../../../modules/messages/service/DeleteMessageService"));
+var ShowMessagesByUserIdService_1 = __importDefault(require("../../../../../modules/messages/service/ShowMessagesByUserIdService"));
 var MessagesController = /** @class */ (function () {
     function MessagesController() {
     }

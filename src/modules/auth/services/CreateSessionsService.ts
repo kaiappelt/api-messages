@@ -1,11 +1,9 @@
-import authConfig from "@config/auth"
+import authConfig from "../../../config/auth"
 import { compare } from "bcryptjs";
-import { Response } from "express";
-import AppError from "@shared/errors/AppError";
-import { getCustomRepository } from "typeorm";
+import AppError from "../../../shared/errors/AppError";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
+import { IUserRepository } from "../../users/domain/repositories/IUserRepository";
 import { ICreateSessions } from "../domain/models/ICreateSessions";
 import { IUserAuth } from "../domain/models/IUserAuth";
 

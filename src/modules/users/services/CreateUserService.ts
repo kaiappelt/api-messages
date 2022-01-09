@@ -1,5 +1,5 @@
 import { hash } from 'bcryptjs';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { IUserRepository } from '../domain/repositories/IUserRepository';
 import { ICreateUser } from '../domain/models/ICreateUser';
 import { IUser } from '../domain/models/IUser';

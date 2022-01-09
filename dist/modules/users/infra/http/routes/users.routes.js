@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var celebrate_1 = require("celebrate");
 var UsersController_1 = __importDefault(require("../controllers/UsersController"));
-var isAuthnticated_1 = __importDefault(require("@shared/infra/http/middlewares/isAuthnticated"));
+var isAuthnticated_1 = __importDefault(require("../../../../../shared/infra/http/middlewares/isAuthnticated"));
 var usersRoutes = (0, express_1.Router)();
 var usersController = new UsersController_1.default();
 // Para listar os usuários cadastrados, é preciso estar autenticado

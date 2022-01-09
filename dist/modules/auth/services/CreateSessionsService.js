@@ -51,9 +51,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var auth_1 = __importDefault(require("@config/auth"));
+var auth_1 = __importDefault(require("../../../config/auth"));
 var bcryptjs_1 = require("bcryptjs");
-var AppError_1 = __importDefault(require("@shared/errors/AppError"));
+var AppError_1 = __importDefault(require("../../../shared/errors/AppError"));
 var jsonwebtoken_1 = require("jsonwebtoken");
 var tsyringe_1 = require("tsyringe");
 var CreateSessionsService = /** @class */ (function () {

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import ListMessagesService from "@modules/messages/service/ListMessagesService";
-import CreateMessagesService from "@modules/messages/service/CreateMessagesService";
-import ShowMessageService from "@modules/messages/service/ShowMessageService";
-import UpdateMessagesService from "@modules/messages/service/UpdateMessageService";
-import DeleteMessagesService from "@modules/messages/service/DeleteMessageService";
-import ShowMessagesByUserIdService from "@modules/messages/service/ShowMessagesByUserIdService";
+import ListMessagesService from "../../../../../modules/messages/service/ListMessagesService";
+import CreateMessagesService from "../../../../../modules/messages/service/CreateMessagesService";
+import ShowMessageService from "../../../../../modules/messages/service/ShowMessageService";
+import UpdateMessagesService from "../../../../../modules/messages/service/UpdateMessageService";
+import DeleteMessagesService from "../../../../../modules/messages/service/DeleteMessageService";
+import ShowMessagesByUserIdService from "../../../../../modules/messages/service/ShowMessagesByUserIdService";
 
 export default class MessagesController {
     public async index(

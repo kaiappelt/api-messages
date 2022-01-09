@@ -1,4 +1,3 @@
-import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IMessage } from "../domain/models/IMessage";
 import { IMessagesUserId } from "../domain/models/IMessagesUserId";
