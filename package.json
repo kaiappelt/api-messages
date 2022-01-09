@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/infra/http/main.ts",
     "postinstall": "npx tsc",
-    "start": "node ./dist/main.js",
+    "start": "node ./dist/shared/infra/http/main.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
