@@ -15,6 +15,10 @@ let app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.json("Welcome to messages-api")
+})
+
 app.use(routes);
 
 // Habilita o retorno de erros do celebrate
