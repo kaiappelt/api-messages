@@ -5,7 +5,9 @@ import {
    UpdateDateColumn,
    Entity,
    PrimaryGeneratedColumn,
+   OneToMany,
 } from "typeorm";
+import Message from "@modules/messages/infra/typeorm/entities/Message";
 
 @Entity("users")
 class User implements IUser{
@@ -21,6 +23,9 @@ class User implements IUser{
     @Column()
     password: string;
 
+    @OneToMany(() => Message, messages => messages.user)
+    messages: Message[];
+  
     @CreateDateColumn()
     created_at: Date;
 
