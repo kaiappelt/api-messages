@@ -3,6 +3,7 @@ import { IMessage } from "../../../domain/models/IMessage";
 import { IMessageRepository } from "../../../domain/repositories/IMessageRepository";
 import { getRepository, Repository } from "typeorm";
 import Message from "../entities/Message";
+import { IMessagesUserId } from "@modules/messages/domain/models/IMessagesUserId";
 
 class MessageRepository implements IMessageRepository {
     private ormRepository: Repository<Message>;
@@ -12,16 +13,18 @@ class MessageRepository implements IMessageRepository {
     }
 
     public async findAll(): Promise<IMessage[]> {
-        const messages = await this.ormRepository.find();
+        const messages = await this.ormRepository.find({ relations: ['user'] });
 
         return messages;
     }
 
-    public async findAllByUserId(user_id: string): Promise<IMessage[]> {
+    public async findAllByUserId(user_id: string): Promise<IMessagesUserId[]> {
         const messages = this.ormRepository.find({
             where: {
                 user_id,
             },
+
+            relations: ['user']
         });
 
         return messages;
@@ -37,7 +40,7 @@ class MessageRepository implements IMessageRepository {
         user_id,
         description,
         details,
-    }: ICreateMessage): Promise<Message> {
+    }: ICreateMessage): Promise<IMessage> {
         const message = this.ormRepository.create({
             user_id,
             description,
@@ -49,13 +52,13 @@ class MessageRepository implements IMessageRepository {
         return message;
     }
 
-    public async save(message: Message): Promise<Message> {
+    public async save(message: Message): Promise<IMessage> {
         await this.ormRepository.save(message)
 
         return message;
     }
 
-    public async remove(message: IMessage): Promise<void> {
+    public async remove(message: Message): Promise<void> {
         await this.ormRepository.remove(message);
     }
 }

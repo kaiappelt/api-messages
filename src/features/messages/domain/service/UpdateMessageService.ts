@@ -3,12 +3,14 @@ import { inject, injectable } from "tsyringe";
 import { IMessage } from "../../domain/models/IMessage";
 import { IUpdateMessage } from "../../domain/models/IUpdateMessage";
 import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
+import RedisCache from "@shared/infra/repositories/CacheRepository";
 
 @injectable()
 class UpdateMessagesService {
     constructor(
         @inject("MessageRepository")
-        private messageRepository: IMessageRepository
+        private messageRepository: IMessageRepository,
+        private redisCache: RedisCache
     ) {}
 
     public async execute({
@@ -24,6 +26,10 @@ class UpdateMessagesService {
 
         message.description = description;
         message.details = details;
+               
+        await this.redisCache.invalidate('api-messages-MESSAGES-LIST');
+        await this.redisCache.invalidate('api-messages-MESSAGE-ID');
+        await this.redisCache.invalidate('api-messages-MESSAGES-USER-ID');
 
         await this.messageRepository.save(message)
 

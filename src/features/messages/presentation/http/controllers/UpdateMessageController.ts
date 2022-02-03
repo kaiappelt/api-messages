@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import UpdateMessagesService from "../../service/UpdateMessageService";
+import UpdateMessagesService from "../../../domain/service/UpdateMessageService";
 import { IController } from "../../../../../core/presentation/contracts/IController";
 
 export default class UpdateMessageController implements IController {
