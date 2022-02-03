@@ -1,5 +1,4 @@
-import { IUser } from "@modules/users/domain/models/IUser";
-import { IUserSession } from "../../../users/domain/models/IUserSession";
+import { IUser } from "../../../users/domain/models/IUser";
 
 export interface IMessage {
     id: string;

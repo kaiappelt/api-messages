@@ -2,7 +2,7 @@ import AppError from "../../../../core/domain/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IDeleteMessage } from "../../domain/models/IDeleteMessage";
 import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
-import RedisCache from "@shared/infra/repositories/CacheRepository";
+import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 
 @injectable()
 class DeleteMessagesService {

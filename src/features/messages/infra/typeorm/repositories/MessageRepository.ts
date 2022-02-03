@@ -3,7 +3,7 @@ import { IMessage } from "../../../domain/models/IMessage";
 import { IMessageRepository } from "../../../domain/repositories/IMessageRepository";
 import { getRepository, Repository } from "typeorm";
 import Message from "../entities/Message";
-import { IMessagesUserId } from "@modules/messages/domain/models/IMessagesUserId";
+import { IMessagesUserId } from "../../../../../features/messages/domain/models/IMessagesUserId";
 
 class MessageRepository implements IMessageRepository {
     private ormRepository: Repository<Message>;

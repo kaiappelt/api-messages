@@ -8,8 +8,7 @@ import {
     ManyToOne,
     JoinColumn,
   } from "typeorm";
-import User from "@modules/users/infra/typeorm/entities/User";
-import { IUserSession } from "@modules/users/domain/models/IUserSession";
+import User from "../../../../../features/users/infra/typeorm/entities/User";
   
   @Entity("messages")
   class Message implements IMessage{

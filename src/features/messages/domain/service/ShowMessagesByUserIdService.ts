@@ -1,6 +1,5 @@
-import RedisCache from "@shared/infra/repositories/CacheRepository";
+import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 import { inject, injectable } from "tsyringe";
-import { IMessage } from "../../domain/models/IMessage";
 import { IMessagesUserId } from "../../domain/models/IMessagesUserId";
 import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
 
@@ -12,8 +11,8 @@ class ShowMessagesByUserIdService {
         private redisCache:RedisCache
     ) {}
 
-    public async execute({ user_id }: IMessagesUserId): Promise<IMessage[]> {
-        let messages = await this.redisCache.recover<IMessage[]>(
+    public async execute({ user_id }: IMessagesUserId): Promise<IMessagesUserId[]> {
+        let messages = await this.redisCache.recover<IMessagesUserId[]>(
             "api-messages-MESSAGES-USER-ID"
           );
       

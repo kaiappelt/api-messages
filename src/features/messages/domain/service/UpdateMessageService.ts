@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { IMessage } from "../../domain/models/IMessage";
 import { IUpdateMessage } from "../../domain/models/IUpdateMessage";
 import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
-import RedisCache from "@shared/infra/repositories/CacheRepository";
+import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 
 @injectable()
 class UpdateMessagesService {

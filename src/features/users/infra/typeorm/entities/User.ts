@@ -7,7 +7,7 @@ import {
    PrimaryGeneratedColumn,
    OneToMany,
 } from "typeorm";
-import Message from "@modules/messages/infra/typeorm/entities/Message";
+import Message from "../../../../../features/messages/infra/typeorm/entities/Message";
 
 @Entity("users")
 class User implements IUser{

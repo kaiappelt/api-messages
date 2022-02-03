@@ -1,6 +1,6 @@
-import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
-import AppError from "@shared/domain/errors/AppError";
-import RedisCache from "@shared/infra/repositories/CacheRepository";
+import { IUserRepository } from "../../../users/domain/repositories/IUserRepository";
+import AppError from "../../../../core/domain/errors/AppError";
+import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 import { inject, injectable } from "tsyringe";
 import { ICreateMessage } from "../../domain/models/ICreateMessage";
 import { IMessage } from "../../domain/models/IMessage";

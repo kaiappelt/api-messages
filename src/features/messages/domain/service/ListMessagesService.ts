@@ -1,4 +1,4 @@
-import RedisCache from "@shared/infra/repositories/CacheRepository";
+import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 import { inject, injectable } from "tsyringe";
 import { IMessage } from "../../domain/models/IMessage";
 import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
