@@ -21,7 +21,7 @@ class UpdateMessagesService {
         const message = await this.messageRepository.findById(id);
 
         if(!message) {
-            throw new AppError("Registro não encontrado!", 400);
+            throw new AppError("Registro não encontrado!", 404);
         }
 
         message.description = description;

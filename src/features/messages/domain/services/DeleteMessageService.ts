@@ -18,7 +18,7 @@ class DeleteMessagesService {
         const message = await this.messageRepository.findById(id);
 
         if(!message) {
-            throw new AppError("Registro não encontrado!", 400);
+            throw new AppError("Registro não encontrado!", 404);
         }
         
         await this.redisCache.invalidate('api-messages-MESSAGES-LIST');
