@@ -3,7 +3,7 @@ Back-End de um sistema de recados com cadastro e autenticação de usuários, ut
 
 # Acesso aos arquivos:
 ##### main.ts: core/presentation/http/main.ts
-#####routes: core/presentation/http/routes/index.ts
+##### routes: core/presentation/http/routes/index.ts
 
 ##### Conexão com banco de dados: core/infra/typeorm/index.ts
 ##### Migrations: core/infra/typeorm/migrations
