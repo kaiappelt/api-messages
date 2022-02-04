@@ -1,8 +1,8 @@
 import AppError from "../../../../core/domain/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { IMessage } from "../../domain/models/IMessage";
-import { IShowMessage } from "../../domain/models/IShowMessage";
-import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
+import { IMessage } from "../models/IMessage";
+import { IShowMessage } from "../models/IShowMessage";
+import { IMessageRepository } from "../repositories/IMessageRepository";
 import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 
 @injectable()

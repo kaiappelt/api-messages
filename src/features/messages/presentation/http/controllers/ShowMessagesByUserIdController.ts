@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import ShowMessagesByUserIdService from "../../../domain/service/ShowMessagesByUserIdService";
+import ShowMessagesByUserIdService from "../../../domain/services/ShowMessagesByUserIdService";
 import { IController } from "../../../../../core/presentation/contracts/IController";
 
 export default class ShowMessagesByUserIdController implements IController {

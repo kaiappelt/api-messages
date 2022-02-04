@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import DeleteMessagesService from "../../../domain/service/DeleteMessageService";
+import DeleteMessagesService from "../../../domain/services/DeleteMessageService";
 import { IController } from "../../../../../core/presentation/contracts/IController";
 
 export default class DeleteMessageController implements IController {

@@ -1,30 +1,29 @@
 import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 import { inject, injectable } from "tsyringe";
-import { IMessagesUserId } from "../../domain/models/IMessagesUserId";
-import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
 import { IMessage } from "../models/IMessage";
+import { IMessageRepository } from "../repositories/IMessageRepository";
 
 @injectable()
-class ShowMessagesByUserIdService {
+class ListMessagesService {
     constructor(
         @inject("MessageRepository")
         private messageRepository: IMessageRepository,
         private redisCache:RedisCache
     ) {}
 
-    public async execute({ user_id }: IMessagesUserId): Promise<IMessage[]> {
+    public async execute(): Promise<IMessage[]> {
         let messages = await this.redisCache.recover<IMessage[]>(
-            "api-messages-MESSAGES-USER-ID"
+            "api-messages-MESSAGES-LIST"
           );
       
           if(!messages){
-            messages = await this.messageRepository.findAllByUserId(user_id);
+            messages = await this.messageRepository.findAll();
       
-            await this.redisCache.save("api-messages-MESSAGES-USER-ID", messages);
+            await this.redisCache.save("api-messages-MESSAGES-LIST", messages);
           }
           
           return messages;
     }
 }
 
-export default ShowMessagesByUserIdService;
+export default ListMessagesService;

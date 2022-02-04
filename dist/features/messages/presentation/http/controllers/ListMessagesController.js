@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var tsyringe_1 = require("tsyringe");
-var ListMessagesService_1 = __importDefault(require("../../../domain/service/ListMessagesService"));
+var ListMessagesService_1 = __importDefault(require("../../../domain/services/ListMessagesService"));
 var ListMessagesController = /** @class */ (function () {
     function ListMessagesController() {
     }

@@ -2,9 +2,9 @@ import { IUserRepository } from "../../../users/domain/repositories/IUserReposit
 import AppError from "../../../../core/domain/errors/AppError";
 import RedisCache from "../../../../core/infra/repositories/CacheRepository";
 import { inject, injectable } from "tsyringe";
-import { ICreateMessage } from "../../domain/models/ICreateMessage";
-import { IMessage } from "../../domain/models/IMessage";
-import { IMessageRepository } from "../../domain/repositories/IMessageRepository";
+import { ICreateMessage } from "../models/ICreateMessage";
+import { IMessage } from "../models/IMessage";
+import { IMessageRepository } from "../repositories/IMessageRepository";
 
 @injectable()
 class CreateMessagesService {
