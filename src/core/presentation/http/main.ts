@@ -6,8 +6,10 @@ import { errors } from 'celebrate';
 import AppError from '../../domain/errors/AppError';
 import routes from './routes';
 import cors from 'cors';
-import '../../infra/typeorm';
 import '../../domain/container';
+import connection from '../../infra/typeorm/index';
+
+connection();
 
 dotenv.config();
 
@@ -42,13 +44,12 @@ app.use(
         // Caso o erro não venha do AppError, é gerado o outro erro a seguir:
         return response.status(500).json({
             status: "error",
-            message: "Erro de servidor",
+            message: error.message,
         });
     },
 );
 
+export { app };
 
-app.listen(process.env.PORT || 3333, () => {
-    console.log("servidor iniciou...")
-});
+
 

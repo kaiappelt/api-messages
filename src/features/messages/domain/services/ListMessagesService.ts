@@ -14,15 +14,15 @@ class ListMessagesService {
     public async execute(): Promise<IMessage[]> {
         let messages = await this.redisCache.recover<IMessage[]>(
             "api-messages-MESSAGES-LIST"
-          );
+        );
       
-          if(!messages){
-            messages = await this.messageRepository.findAll();
-      
-            await this.redisCache.save("api-messages-MESSAGES-LIST", messages);
-          }
-          
-          return messages;
+        if(!messages){
+        messages = await this.messageRepository.findAll();
+    
+        await this.redisCache.save("api-messages-MESSAGES-LIST", messages);
+        }
+        
+        return messages;
     }
 }
 

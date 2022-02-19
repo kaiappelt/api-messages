@@ -3,7 +3,7 @@ import { IUserRepository } from '../../../features/users/domain/repositories/IUs
 import UsersRepository from '../../../features/users/infra/typeorm/repositories/UsersRepository';
 import MessageRepository from '../../../features/messages/infra/typeorm/repositories/MessageRepository';
 import { IMessageRepository } from '../../../features/messages/domain/repositories/IMessageRepository';
-
+import "@features/users/domain/providers"
 container.registerSingleton<IUserRepository>(
     'UsersRepository',
      UsersRepository

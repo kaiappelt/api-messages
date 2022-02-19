@@ -9,10 +9,11 @@ export default class DeleteMessageController implements IController {
         response: Response
         ):Promise<Response> {
             const { id } = request.params;
+            const user_id_session = request.user.id;
 
             const deleteMessage = container.resolve(DeleteMessagesService);
 
-            await deleteMessage.execute({ id });
+            await deleteMessage.execute({ id, user_id_session });
 
             return response.json([]);
         }

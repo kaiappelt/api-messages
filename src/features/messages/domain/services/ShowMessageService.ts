@@ -15,13 +15,13 @@ class ShowMessageService {
 
     public async execute({ id }: IShowMessage): Promise<IMessage> {
         let message = await this.redisCache.recover<IMessage>(
-            "api-messages-MESSAGE-ID"
+            `api-messages-MESSAGE-${id}`
           );
       
           if(!message){
             message = await this.messageRepository.findById(id) || null;
       
-            await this.redisCache.save("api-messages-MESSAGE-ID", message);
+            await this.redisCache.save(`api-messages-MESSAGE-${id}`, message);
           }
 
         if(!message) {

@@ -8,7 +8,7 @@ export default class ShowMessagesByUserIdController implements IController {
         request: Request, 
         response: Response
         ):Promise<Response> {
-        const { user_id } = request.params;
+        const user_id = request.user.id;
 
         const showMessages = container.resolve(ShowMessagesByUserIdService);
 

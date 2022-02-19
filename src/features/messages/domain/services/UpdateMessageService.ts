@@ -14,6 +14,7 @@ class UpdateMessagesService {
     ) {}
 
     public async execute({
+        user_id_session,
         id,
         description,
         details,
@@ -28,8 +29,8 @@ class UpdateMessagesService {
         message.details = details;
                
         await this.redisCache.invalidate('api-messages-MESSAGES-LIST');
-        await this.redisCache.invalidate('api-messages-MESSAGE-ID');
-        await this.redisCache.invalidate('api-messages-MESSAGES-USER-ID');
+        await this.redisCache.invalidate(`api-messages-MESSAGE-${id}`);
+        await this.redisCache.invalidate(`api-messages-MESSAGES-USER-${user_id_session}`);
 
         await this.messageRepository.save(message)
 

@@ -8,12 +8,14 @@ export default class CreateMessageController implements IController{
         request: Request, 
         response: Response
         ):Promise<Response> {
-        const { user_id, description, details } = request.body;
+        const { description, details } = request.body;
+
+        const user_id_session = request.user.id;
 
         const createMessage = container.resolve(CreateMessagesService);
 
         const message = await createMessage.execute({
-           user_id,
+           user_id: user_id_session,
            description,
            details
         });

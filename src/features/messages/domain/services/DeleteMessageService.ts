@@ -14,6 +14,7 @@ class DeleteMessagesService {
 
     public async execute({
         id,
+        user_id_session
     }: IDeleteMessage): Promise<void> {
         const message = await this.messageRepository.findById(id);
 
@@ -22,8 +23,8 @@ class DeleteMessagesService {
         }
         
         await this.redisCache.invalidate('api-messages-MESSAGES-LIST');
-        await this.redisCache.invalidate('api-messages-MESSAGE-ID');
-        await this.redisCache.invalidate('api-messages-MESSAGES-USER-ID');
+        await this.redisCache.invalidate(`api-messages-MESSAGE-${id}`);
+        await this.redisCache.invalidate(`api-messages-MESSAGES-USER-${user_id_session}`);
 
         await this.messageRepository.remove(message);
     }

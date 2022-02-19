@@ -30,8 +30,7 @@ class CreateMessagesService {
         }
 
         await this.redisCache.invalidate('api-messages-MESSAGES-LIST');
-        await this.redisCache.invalidate('api-messages-MESSAGE-ID');
-        await this.redisCache.invalidate('api-messages-MESSAGES-USER-ID');
+        await this.redisCache.invalidate(`api-messages-MESSAGES-USER-${user_id}`);
 
         const message = await this.messageRepository.create({
             user_id,

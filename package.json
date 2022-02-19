@@ -3,10 +3,12 @@
   "version": "2.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/core/presentation/http/main.ts",
-    "postinstall": "npx tsc",
-    "start": "node ./dist/core/presentation/http/main.js",
+    "test": "npx cross-env NODE_ENV=test jest --silent --noStackTrace --runInBand -c ./jest.config.unit.ts",
+    "test:integration": "npx cross-env NODE_ENV=test jest --silent --noStackTrace --runInBand -c ./jest.config.integration.ts",
+    "test:setup": "cross-env NODE_ENV=test && npm run typeorm migration:run",
+    "dev": "npx cross-env NODE_ENV=app && ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/core/presentation/http/server.ts",
+    "postinstall": "cross-env NODE_ENV=app && npx tsc && npm run typeorm migration:run",
+    "start": "node ./dist/core/presentation/http/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
@@ -34,10 +36,14 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/node": "^16.11.13",
     "@types/uuid": "^8.3.1",
+    "cross-env": "^7.0.3",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.4.4"

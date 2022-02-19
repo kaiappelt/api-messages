@@ -4,6 +4,12 @@ import { verify } from "jsonwebtoken";
 import authConfig from "../../../../config/auth"
 import { Secret } from "jsonwebtoken";
 
+interface ITokenPayload {
+    iat: number;
+    exp: number;
+    sub: string;
+  }
+
 export default function isAuthenticated(
     request:Request, 
     response: Response, 
@@ -18,9 +24,15 @@ export default function isAuthenticated(
     const [, token] = authHeader.split(' ');
 
     try {
-        const decodeToken = verify(token, authConfig.jwt.secret as Secret)
+        const decodedToken = verify(token, authConfig.jwt.secret as Secret);
 
-        return next();
+    const { sub } = decodedToken as ITokenPayload;
+
+    request.user = {
+      id: sub,
+    };
+
+    return next();
 
     } catch {
         throw new AppError("Token inválido!", 401);
