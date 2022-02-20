@@ -1,13 +1,19 @@
 # api-messages
+
 Back-End de um sistema de recados com cadastro e autenticação de usuários, utilizando Node.js com Typescript, TypeORM, PostgreSQL.
 
 # Acesso aos arquivos:
+
 ##### main.ts: core/presentation/http/main.ts
+
 ##### routes: core/presentation/http/routes/index.ts
 
-##### Conexão com banco de dados: core/infra/typeorm/index.ts
-##### Migrations: core/infra/typeorm/migrations
+##### Conexão com banco de dados: core/infra/database/index.ts
 
-Nos módulos da api (src/modules), foram separadas as responsabilidades nas camadas:
-domain, infra e presentation. Também está desacoplada a dependência das funções de ORM nos repositories e services utilizando conceitos de injeção de dependências e inversão de dependências.
+##### Migrations: core/infra/database/migrations
 
+##### Para executar os testes, utilizar outro banco PostgreSQL separado do que executa a aplicação. Inserir os dados dos bancos no .env.
+
+DB_TYPE=postgres
+DB_URL_APP=
+DB_URL_TESTS=

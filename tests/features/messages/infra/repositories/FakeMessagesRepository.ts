@@ -1,7 +1,7 @@
 
 import { ICreateMessage } from '../../../../../src/features/messages/domain/models/ICreateMessage';
 import { IMessageRepository } from '../../../../../src/features/messages/domain/repositories/IMessageRepository';
-import Message from '../../../../../src/features/messages/infra/typeorm/entities/Message';
+import Message from '../../../../../src/features/messages/infra/entities/Message';
 import { IMessage } from '../../../../../src/features/messages/domain/models/IMessage';
 import { v4 as uuidv4 } from 'uuid';
 

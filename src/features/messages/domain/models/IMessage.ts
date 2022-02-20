@@ -5,7 +5,6 @@ export interface IMessage {
     user_id: string;
     description: string;
     details: string;
-    user: IUser;
     created_at: Date;
     updated_at: Date;
 }

@@ -7,7 +7,7 @@ import AppError from '../../domain/errors/AppError';
 import routes from './routes';
 import cors from 'cors';
 import '../../domain/container';
-import connection from '../../infra/typeorm/index';
+import connection from '../../infra/database/index';
 
 connection();
 
