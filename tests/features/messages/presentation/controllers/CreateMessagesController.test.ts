@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from "../../../../../src/core/presentation/http/main";
 
-describe('ListMessagesController', () => {
+describe('CreateMessagesController', () => {
     it('Estando autenticado, deve cadastrar uma mensagem', async () => {
         await request(app).post('/users').send({
             name: 'usuário teste',
